@@ -78,6 +78,8 @@ SELECT title FROM Books where stock = 0;
 
 select * from books where price = (SELECT max(price) from books)
 
+-- first retrive which is expensive then show all data
+
 -- 3 Find the total number of orders placed by each customer.
 
 SELECT customers.name,count(*) from orders join customers on customers.id = orders.customer_id GROUP BY customers.name
@@ -88,14 +90,20 @@ SELECT sum(orders.quantity * books.price) as total_revenue
 FROM orders
 JOIN books  on orders.book_id = books.id;
 
+-- order quantity * price is total cost of selling price which is sum by functions
+
 -- 5 List all customers who have placed more than one order.
 
 select customers.name,count(orders.customer_id) from orders join customers on orders.customer_id = customers.id GROUP BY customers.name having count(orders.customer_id) > 1
+
+-- first off all join the both table and group by all table by unique name and find the count of all unique table which occurs how much time
 
 -- 6  Find the average price of books in the store.
 
 SELECT round(avg(price),2) as average_book_price
 from books;
+
+-- round use to define to describe number after dosomik
 
 -- 7 Increase the price of all books published before 2000 by 10%
 
@@ -112,7 +120,7 @@ UPDATE books
 delete from customers where id not in (select customer_id from orders)
 
 -- SELECT * from customers 
--- 
+
 
 
 
