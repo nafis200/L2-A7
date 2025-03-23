@@ -111,7 +111,8 @@ UPDATE books
 
 delete from customers where id not in (select customer_id from orders)
 
--- SELECT * from customers
+-- SELECT * from customers 
+-- 
 
 
 
